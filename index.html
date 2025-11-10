@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen Ai — Learn Smart. Create Bold.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --primary: #00d4ff;
+            --primary-glow: #00f0ff;
+            --text-light: #e0e0e0;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-note {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem auto;
+            max-width: 600px;
+            font-size: 0.95rem;
+        }
+
+        .hero-note strong {
+            color: var(--primary);
+        }
+
+        .btn-glow {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            border-radius: 50px;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--primary);
+            transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .btn-glow:hover {
+            color: var(--darker-bg);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-glow:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .whatsapp-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .whatsapp-btn {
+            padding: 0.9rem 2rem;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+            color: var(--darker-bg);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
+        }
+
+        .info-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-box p {
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-item a:hover {
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .founders {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .founder {
+            text-align: center;
+        }
+
+        .founder-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-glow) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .course-card:hover::before {
+            left: 100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .course-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s;
+        }
+
+        .work-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .work-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.6s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        /* Contact Form */
+/* Subscribe Section */
+#mc_embed_signup {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    margin: 4rem auto;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.1);
+}
+
+#mc_embed_signup h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-glow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#mc_embed_signup label {
+    display: block;
+    text-align: left;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+#mc_embed_signup input[type="text"],
+#mc_embed_signup input[type="email"] {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#mc_embed_signup input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+#mc_embed_signup input[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+#mc_embed_signup input[type="submit"]:hover {
+    background: var(--primary);
+    color: var(--darker-bg);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+#mc_embed_signup select {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s;
+    appearance: none; /* removes default arrow in some browsers */
+}
+
+#mc_embed_signup select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #mc_embed_signup {
+        padding: 2rem 1.5rem;
+    }
+}
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .founders {
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Welcome to Gen Ai</h1>
+            <p>The Future of Digital Learning</p>
+            <p>Learn Generative AI, Web Development, Graphic Design & More</p>
+            <div class="hero-note">
+                <p>🎓 <strong>By MUST University Students</strong> | 📍 Physical Setup Opening Soon in Mirpur, AJK</p>
+                <p>💻 Currently Offering Online Classes</p>
+            </div>
+            <div class="discount-badge">🔥 50% OFF for MUST Students! 🔥</div>
+            <div class="whatsapp-buttons">
+                <a href="https://wa.me/923423720832?text=Hi!%20I%20want%20to%20join%20Gen%20Ai%20courses" class="whatsapp-btn" target="_blank">
+                    💬 Chat on WhatsApp (Ahsan)
+                </a>
+                <a href="https://wa.me/923098900260?text=Hi!%20I%20want%20to%20join%20Gen%20Ai%20courses" class="whatsapp-btn" target="_blank">
+                    💬 Chat on WhatsApp (Shaheer)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" data-aos="fade-up">
+        <h2>About Gen Ai</h2>
+        <div class="about-content">
+            <p>Gen Ai is a forward-thinking software house dedicated to empowering students and tech enthusiasts through innovative online learning and mentorship. We specialize in cutting-edge technologies and creative skills that shape the digital future.</p>
+        </div>
+
+        <div class="info-box" data-aos="fade-up">
+            <h4>📢 Important Updates</h4>
+            <p>🎓 Founded by <strong>MUST University Students</strong></p>
+            <p>💻 Currently offering <strong>Online Classes</strong> with expert mentorship</p>
+            <p>🏢 <strong>Physical Setup Opening Soon</strong> in Mirpur, Azad Kashmir (Within 1 Month!)</p>
+            <p>🎁 <strong>Special 50% Discount</strong> for all MUST University Students</p>
+        </div>
+
+        <div class="info-box" data-aos="fade-up" data-aos-delay="100">
+            <h4>📞 Contact Us</h4>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="https://wa.me/923423720832" target="_blank">+92 342 3720832 (Muhammad Ahsan Rehman)</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="https://wa.me/923098900260" target="_blank">+92 309 8900260 (Shaheer Ayyaz)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="founders">
+            <div class="founder" data-aos="zoom-in" data-aos-delay="100">
+                <div class="founder-icon">💡</div>
+                <h3 style="color: var(--primary);">Muhammad Ahsan Rehman</h3>
+                <p style="color: var(--text-dim);">Co-Founder | MUST Student</p>
+            </div>
+            <div class="founder" data-aos="zoom-in" data-aos-delay="200">
+                <div class="founder-icon">🚀</div>
+                <h3 style="color: var(--primary);">Shaheer Ayyaz</h3>
+                <p style="color: var(--text-dim);">Co-Founder | MUST Student</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" data-aos="fade-up">
+        <h2>Our Courses</h2>
+        <div class="courses-grid">
+            <div class="course-card" data-aos="flip-left" data-aos-delay="100">
+                <div class="course-icon">🎨</div>
+                <h3>Graphic Designing</h3>
+                <p style="color: var(--text-dim);">Master visual communication with industry-standard tools and creative techniques.</p>
+            </div>
+            <div class="course-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="course-icon">🎥</div>
+                <h3>Video Editing</h3>
+                <p style="color: var(--text-dim);">Create stunning videos using CapCut and AI-powered editing tools.</p>
+            </div>
+            <div class="course-card" data-aos="flip-left" data-aos-delay="300">
+                <div class="course-icon">💻</div>
+                <h3>Web Development</h3>
+                <p style="color: var(--text-dim);">Build modern, responsive websites with front-end and back-end technologies.</p>
+            </div>
+            <div class="course-card" data-aos="flip-left" data-aos-delay="400">
+                <div class="course-icon">🤖</div>
+                <h3>Generative AI</h3>
+                <p style="color: var(--text-dim);">Explore the future with AI models, prompt engineering, and automation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="work" data-aos="fade-up">
+        <h2>Our Work</h2>
+        <div class="work-grid">
+            <div class="work-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="work-overlay">
+                    <h3>Brand Design Project</h3>
+                </div>
+            </div>
+            <div class="work-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="work-overlay">
+                    <h3>E-Commerce Website</h3>
+                </div>
+            </div>
+            <div class="work-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="work-overlay">
+                    <h3>AI-Powered App</h3>
+                </div>
+            </div>
+            <div class="work-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="work-overlay">
+                    <h3>Promotional Video</h3>
+                </div>
+            </div>
+            <div class="work-item" data-aos="zoom-in" data-aos-delay="500">
+                <div class="work-overlay">
+                    <h3>Social Media Campaign</h3>
+                </div>
+            </div>
+            <div class="work-item" data-aos="zoom-in" data-aos-delay="600">
+                <div class="work-overlay">
+                    <h3>Portfolio Website</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" data-aos="fade-up">
+        <h2>What Students Say</h2>
+        <div class="testimonials-slider">
+            <div class="testimonial active">
+                <p>"Gen Ai transformed my career. The mentorship and hands-on projects gave me real-world skills that landed me my dream job."</p>
+                <div class="testimonial-author">— Sarah Ahmed</div>
+            </div>
+            <div class="testimonial">
+                <p>"The AI course was incredibly detailed and practical. I can now build my own AI applications with confidence."</p>
+                <div class="testimonial-author">— Ali Khan</div>
+            </div>
+            <div class="testimonial">
+                <p>"Best investment in my education. The instructors are knowledgeable and the community is supportive."</p>
+                <div class="testimonial-author">— Fatima Raza</div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" onclick="showTestimonial(0)"></span>
+            <span class="dot" onclick="showTestimonial(1)"></span>
+            <span class="dot" onclick="showTestimonial(2)"></span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<!-- Replace your current subscribe form section with this -->
+<div id="mc_embed_signup">
+    <form id="mc-embedded-subscribe-form" 
+          name="mc-embedded-subscribe-form" 
+          action="https://gmail.us20.list-manage.com/subscribe/post?u=da413558d58bd483e175bd05f&amp;id=14c8e0251f&amp;f_id=0027c2e1f0" 
+          method="post" 
+          target="hidden_iframe">
+
+        <h2>Contact Us</h2>
+
+        <div class="mc-field-group">
+            <label for="mce-EMAIL">Email Address *</label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required>
+        </div>
+
+        <div class="mc-field-group">
+            <label for="mce-FNAME">First Name</label>
+            <input type="text" name="FNAME" id="mce-FNAME">
+        </div>
+
+        <div class="mc-field-group">
+            <label for="mce-LNAME">Last Name</label>
+            <input type="text" name="LNAME" id="mce-LNAME">
+        </div>
+
+                <div class="mc-field-group">
+        <label for="mce-COMPANY">Select an Option</label>
+        <select name="COMPANY" id="mce-COMPANY">
+            <option  value="">-- Please choose --</option>
+            <option value="Option1">Front-end</option>
+            <option value="Option2">Graphics</option>
+            <option value="Option3">Option 3</option>
+            <option value="Option4">Option 4</option>
+        </select>
+        </div>
+
+        <div class="mc-field-group">
+            <label for="mce-PHONE">Phone Number *</label>
+            <input type="text" name="PHONE" id="mce-PHONE" required>
+        </div>
+
+        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+            <input type="text" name="b_da413558d58bd483e175bd05f_14c8e0251f" tabindex="-1" value="">
+        </div>
+
+        <input type="submit" name="subscribe" id="mc-embedded-subscribe" value="Subscribe">
+    </form>
+
+    <!-- Hidden iframe -->
+    <iframe name="hidden_iframe" style="display:none;" onload="subscriptionSuccess()"></iframe>
+</div>
+
+<!-- Popup for success message -->
+<div id="subscribe-popup" style="
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #00d4ff, #00f0ff);
+    color:#050508;
+    padding:1.5rem 3rem;
+    border-radius:15px;
+    font-weight:600;
+    z-index:9999;
+    box-shadow:0 0 30px rgba(0,212,255,0.6);
+    text-align:center;
+    font-size:1.2rem;
+">
+    ✅ Thank you for subscribing!
+</div>
+
+<script>
+    // Get the form element
+    const form = document.getElementById('mc-embedded-subscribe-form');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default redirect
+
+        // Use Mailchimp AJAX URL
+        const url = form.action;
+        const formData = new FormData(form);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // Mailchimp requires this for AJAX
+        }).then(() => {
+            // Show popup
+            const popup = document.getElementById('subscribe-popup');
+            popup.style.display = 'block';
+
+            // Scroll to top so user sees popup (optional)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Clear form fields
+            form.reset();
+
+            // Hide popup after 4 seconds
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 4000);
+        }).catch(err => {
+            console.error(err);
+        });
+    });
+</script>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="WhatsApp">💬</a>
+            <a href="#" title="Email">📧</a>
+        </div>
+        <p style="color: var(--text-dim);">© 2025 Gen Ai. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">✕</span>
+            <img id="modalImage" src="" alt="" style="max-width: 100%; border-radius: 10px;">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#00d4ff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#00d4ff',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Testimonials Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.dot');
+
+        function showTestimonial(index) {
+            testimonials.forEach(t => t.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            testimonials[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(() => {
+                this.reset();
+                this.style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        // Modal Functions
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Work Items Click (placeholder)
+        document.querySelectorAll('.work-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // In a real implementation, you would load actual project content here
+                alert('Project preview coming soon!');
+            });
+        });
+    </script>
+</body>
+</html>
